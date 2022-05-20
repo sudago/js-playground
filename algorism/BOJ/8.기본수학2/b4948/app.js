@@ -1,25 +1,21 @@
 const fs = require('fs');
-const { isPrimitive } = require('util');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
 const input = fs.readFileSync(filePath).toString().split('\n');
 
-
-let TC = 0;
-
-function sol() {
+function solution(input) {
   let answer = '';
-
-  while (1) {
-    let n = +input[TC++];
-    if (n === 0) break;
-
+  for (let i = 0; i < input.length; i++) {
+    if (+input[i] === 0) break;
+    const n = +input[i];
     let cnt = 0;
-    for (let i = n + 1; i <= 2 * n; i++) {
-      if (isPrime(i)) cnt++;
+    for (let j = n + 1; j <= 2 * n; j++) {
+      if (isPrime(j)) {
+        cnt++;
+      }
     }
     answer += `${cnt}\n`;
   }
-  return answer;
+  return answer.slice(0, -1);
 }
 
 function isPrime(n) {
@@ -29,4 +25,4 @@ function isPrime(n) {
   return true;
 }
 
-console.log(sol().trim());
+console.log(solution(input));
