@@ -25,4 +25,5 @@ function isPrime(n) {
   return true;
 }
 
-console.log(solution(input));
+// console.log(solution(input));
+console.log(0 % 26)
